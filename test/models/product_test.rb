@@ -48,13 +48,13 @@ class ProductTest < ActiveSupport::TestCase
 		end
 	end
 
-	test "product is nod valid without a unique title - i18n" do
+	test "product is nod valid without a unique title" do
 		product =  Product.new(title: products(:ruby).title,	
 							description: "my book description",	
 							image_url: "zzz.jpg",
 							price: 1.2) 
 
 		assert product.invalid?
-		assert_equal [I18n.translate('aciverecord.errors.messages.taken')], product.errors[:title]
+		assert_equal ['has already been taken'], product.errors[:title]
 	end
 end
