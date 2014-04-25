@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
 		with: %r{\.(gif|jpg|png)\Z}i,
 		message: 'URL must specify the image format GIF, JPG or PNG.'
 	}
+	validates :image_url, uniqueness: true
+	validates :price, numericality: {less_than_or_equal_to: 500}
 
 	def self.latest
 		Product.order(:updated_at).last

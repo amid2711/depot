@@ -20,3 +20,23 @@ ruby:
     delivered fast, you should add Ruby to your toollbox.
   price: 49.50
   image_url: ruby.png
+
+world:
+  title: My Beloved World
+  description: 
+    We offer Free Book Shipping for new and used books
+    (non extbooks) online on orders over $20 within the 
+    Continental United States.
+  price: 11.50
+  image_url: world.gif
+
+mickey:
+  title: Mickey Mouse in King Arthur's Court
+  description: 
+    Published in 1933, this pop up book is inscribed by 
+    Walt Disney to songwriter Carrie Jacobs Bond – “To 
+    Carrie Jacobs Bond with sincere admiration Walt Disney,
+     1937.” Jacobs Bond wrote the song, I Love You Truly, 
+     and became the first woman to sell a million copies of a song.
+  price: 15.95
+  image_url: Mickey.jpg
