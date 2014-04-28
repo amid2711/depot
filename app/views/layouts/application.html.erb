@@ -25,9 +25,21 @@
 				<li> <a href="http://www.../faq">Questions </a> </li>
 				<li> <a href="http://www.../news">News </a> </li>
 				<li> <a href="http://www.../contact">Contact </a> </li>
-				<li> <p> <%= Date.today %> </p> </li>
-				<li> <p> <%= Time.now.strftime("%H:%M:%S") %> </p> </li>
 			</ul>
+
+			<% if session[:user_id] %>
+			  <ul>
+			    <li><%= link_to 'Orders', orders_path %> </li>
+			    <li><%= link_to 'Products', products_path %> </li>
+			    <li><%= link_to 'Users', users_path %> </li>
+			  </ul>
+			  <%= button_to 'Logout', logout_path, method: :delete %>
+			<% end %>
+
+			<p>
+			<%= Date.today %>
+			<%= Time.now.strftime("%H:%M:%S") %>
+			</p>
 		</div>
 
 		<div id ="main">
