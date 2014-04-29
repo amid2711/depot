@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   protected
 
     def authorize
-      unless User.find_by(id: session[:user_id])
-      	redirect_to login_url, notice: "Please, authorize"
-      end
+        unless User.find_by(id: session[:user_id]) or User.count.zero?
+      	  redirect_to login_url, notice: "Please, authorize"
+        end
     end
 end
