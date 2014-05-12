@@ -1,4 +1,8 @@
 Depot::Application.routes.draw do
+  match '/faq',     to: 'pages#faq',      via: 'get'
+  match '/news',    to: 'pages#news',     via: 'get'
+  match '/contact', to: 'pages#contact',  via: 'get'
+  
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
