@@ -9,12 +9,17 @@
 <body class='<%= controller.controller_name %>'>
 
 	<div id = "banner">
-		<%= form_tag store_path, class: 'locale' do %>
-			<%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),
-			                             onchange: 'this.form.submit()' %>
-			<%= submit_tag 'submit' %>
-			<%= javascript_tag "$('.locale input').hide()" %>
+
+		<% unless User.find_by(id: session[:user_id]) or User.count.zero? or params[:controller]=='sessions' %>
+			<%= form_tag store_path, class: 'locale' do %>
+				<%= select_tag 'set_locale', options_for_select(LANGUAGES, I18n.locale.to_s),
+				                             onchange: 'this.form.submit()' %>
+				<%= submit_tag 'submit' %>
+				<%= javascript_tag "$('.locale input').hide()" %>
+			<% end %>
 		<% end %>
+
+
 		<%= image_tag("logo.png") %>
 		<%= @page_title || t('.title') %>
 	</div>
@@ -27,7 +32,7 @@
 			<% end %>
 		  <% end %>
 			<ul>
-				<li> <a href="http://www..."><%= t('.home') %></a> </li>
+				<li> <a href=<%= store_path %> > <%= t('.home') %></a> </li>
 				<li> <a href="http://www.../faq"><%= t('.questions') %></a> </li>
 				<li> <a href="http://www.../news"><%= t('.news') %></a></li>
 				<li> <a href="http://www.../contact"><%= t('.contact') %></a></li>
@@ -42,10 +47,12 @@
 			  <%= button_to 'Logout', logout_path, method: :delete %>
 			<% end %>
 
+			<% if false %>
 			<p>
 			<%= Date.today %>
 			<%= Time.now.strftime("%H:%M:%S") %>
 			</p>
+			<% end %>
 		</div>
 
 		<div id ="main">
